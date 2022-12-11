@@ -15,22 +15,71 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
             <main className="flex-auto mx-8 mt-16">
               <ArticleGroup>
                 <Typography usage="title">{data.fullname}</Typography>
-                <Typography usage="title">Objective</Typography>
-                <Typography usage="content" className="text-gray-600">
-                  "Always to learning, hard working and enjoy it !"
-                </Typography>
               </ArticleGroup>
 
-              <ArticleGroup>
-                <Typography usage="title">Summary</Typography>
-                <Typography usage="content">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, autem itaque facere error
-                  ratione nobis vel, fugit sit ut, aspernatur veniam nisi sequi qui voluptatibus ea provident amet
-                  dignissimos. Voluptas!
-                </Typography>
-              </ArticleGroup>
+              {/* -------------------------------- EDUCATION -------------------------------- */}
+              {data.cvjson.education && (
+                <ArticleGroup>
+                  <Typography usage="title">Education</Typography>
+                  {data.cvjson.education.map((val, index) => (
+                    <React.Fragment key={`education_${index}`}>
+                      <Timeline from={val.startDate} to={val.endDate}>
+                        <Typography usage="content" className="font-bold !text-xl">
+                          {val.schoolName}
+                        </Typography>
 
-              <ArticleGroup>
+                        <Typography usage="content" className="font-bold">
+                          {val.degreeName}
+                        </Typography>
+
+                        <Typography usage="content">{val.fieldOfStudy}</Typography>
+                      </Timeline>
+                      <Typography usage="content"></Typography>
+                    </React.Fragment>
+                  ))}
+                </ArticleGroup>
+              )}
+
+              {/* -------------------------------- EPERIENCES -------------------------------- */}
+              {data.cvjson.experiences && (
+                <ArticleGroup>
+                  <Typography usage="title">Eperiences</Typography>
+                  {data.cvjson.experiences.map((val, index) => (
+                    <React.Fragment key={`experiences_${index}`}>
+                      <Timeline from={val.startDate} to={val.endDate}>
+                        <Typography usage="content" className="font-bold !text-lg">
+                          {val.company}
+                        </Typography>
+                        {val.location && (
+                          <Typography usage="content" className="font-bold">
+                            {val.location}
+                          </Typography>
+                        )}
+                        {val.title && (
+                          <Typography usage="content" className="font-bold">
+                            {val.title}
+                          </Typography>
+                        )}
+
+                        {val.description && <Typography usage="content">{val.description}</Typography>}
+                      </Timeline>
+                    </React.Fragment>
+                  ))}
+                </ArticleGroup>
+              )}
+            </main>
+          </React.Fragment>
+        )
+      }
+    </Context.Consumer>
+  );
+};
+
+export default Article;
+
+/*
+
+<ArticleGroup>
                 <Typography usage="title">Experiences</Typography>
                 <Timeline from="June 2020" to="September 2022">
                   <Typography usage="content" className="font-bold">
@@ -44,39 +93,4 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
                 </Timeline>
               </ArticleGroup>
 
-              {/* <ArticleGroup>
-        <Typography usage="title">Educations</Typography>
-        <Timeline from="June 2018" to="September 2022">
-          <Typography usage="content" className="font-bold">
-            Mary Current High school
-          </Typography>
-        </Timeline>
-        <Timeline from="June 2020" to="September 2022">
-          <Typography usage="content" className="font-bold">
-            Harvard University
-          </Typography>
-        </Timeline>
-      </ArticleGroup>
-
-      <ArticleGroup>
-        <Typography usage="title">Educations</Typography>
-        <Timeline from="June 2018" to="September 2022">
-          <Typography usage="content" className="font-bold">
-            Mary Current High school
-          </Typography>
-        </Timeline>
-        <Timeline from="June 2020" to="September 2022">
-          <Typography usage="content" className="font-bold">
-            Harvard University
-          </Typography>
-        </Timeline>
-      </ArticleGroup> */}
-            </main>
-          </React.Fragment>
-        )
-      }
-    </Context.Consumer>
-  );
-};
-
-export default Article;
+*/

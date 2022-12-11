@@ -2,6 +2,24 @@ import * as React from "react";
 import useAppProvider from "../../context/appContext";
 import { ArticleGroup, Timeline, Typography } from "../article-field";
 
+interface IEndLineProps {
+  text?: string;
+}
+
+const EndLine: React.FunctionComponent<IEndLineProps> = (props) => {
+  const { text } = props;
+  const arr = text?.split("•");
+  return (
+    <React.Fragment>
+      {arr?.map((val, index) => (
+        <React.Fragment>
+          {val} <br />
+        </React.Fragment>
+      ))}
+    </React.Fragment>
+  );
+};
+
 interface IArticleProps {}
 
 const Article: React.FunctionComponent<IArticleProps> = (props) => {
@@ -51,8 +69,8 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
                           {val.company}
                         </Typography>
                         {val.location && (
-                          <Typography usage="content" className="font-bold">
-                            {val.location}
+                          <Typography usage="content" className="font-bold !text-gray-600">
+                            {val.location} - Area
                           </Typography>
                         )}
                         {val.title && (
@@ -61,7 +79,11 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
                           </Typography>
                         )}
 
-                        {val.description && <Typography usage="content">{val.description}</Typography>}
+                        {val.description && (
+                          <Typography usage="content" className="list-disc">
+                            <EndLine text={val.description} />
+                          </Typography>
+                        )}
                       </Timeline>
                     </React.Fragment>
                   ))}

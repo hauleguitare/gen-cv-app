@@ -5,6 +5,6 @@ const AppConfig = axios.create({
   baseURL: Config.baseUrl,
 });
 
-export function Read<T>(endpoint: string) {
+export function read<T>(endpoint: string) {
   return AppConfig.get(`${endpoint}`, {}).then((resp) => resp.data as T);
 }

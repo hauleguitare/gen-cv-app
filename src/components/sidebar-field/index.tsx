@@ -40,7 +40,7 @@ export const FieldSidebar: React.FunctionComponent<IFieldSidebarProps> = (props)
     <li className="whitespace-normal break-words">
       {href ? (
         <a href={href}>
-          <p>{href}</p>
+          <span>{href}</span>
         </a>
       ) : (
         <span>{title}</span>

@@ -24,8 +24,17 @@ function App() {
     getData();
   }, []);
 
+  const onPrint = () => {
+    window.print();
+  };
+
   return (
     <div className="App">
+      <div className="w-full flex justify-center">
+        <button onClick={onPrint} className="py-2 px-2 bg-blue-500 rounded-md mt-4">
+          PRINT PDF
+        </button>
+      </div>
       <Provider value={data}>
         <div className="min-h-screen flex container">
           <Sidebar />

@@ -18,26 +18,32 @@ interface IFieldGroupSidebarProps {
   children?: React.ReactNode;
   title: string;
   isListDisc?: boolean;
+  className?: string;
 }
 export const FieldGroupSidebar: React.FunctionComponent<IFieldGroupSidebarProps> = (props) => {
-  const { children, title } = props;
+  const { children, title, className } = props;
   return (
-    <div className="font-mulish text-lg text-white mt-8">
+    <div className={`font-mulish text-lg text-white mt-8 relative ${className}`}>
       <span className="text-2xl">{title}</span>
       <ul className="gap-2 ml-8 flex flex-col pt-4 text-base list-disc">{children}</ul>
     </div>
   );
 };
 
+FieldGroupSidebar.defaultProps = {
+  className: "",
+};
+
 interface IFieldSidebarProps {
   title?: string;
   href?: string;
+  className?: string;
 }
 
 export const FieldSidebar: React.FunctionComponent<IFieldSidebarProps> = (props) => {
-  const { title, href } = props;
+  const { title, href, className } = props;
   return (
-    <li className="whitespace-normal break-words">
+    <li className={`break-words ${className}`}>
       {href ? (
         <a href={href}>
           <span>{href}</span>
@@ -47,4 +53,8 @@ export const FieldSidebar: React.FunctionComponent<IFieldSidebarProps> = (props)
       )}
     </li>
   );
+};
+
+FieldSidebar.defaultProps = {
+  className: "",
 };

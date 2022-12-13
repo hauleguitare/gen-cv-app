@@ -12,7 +12,7 @@ const EndLine: React.FunctionComponent<IEndLineProps> = (props) => {
   return (
     <React.Fragment>
       {arr?.map((val, index) => (
-        <React.Fragment>
+        <React.Fragment key={`${val}_${index}`}>
           {val} <br />
         </React.Fragment>
       ))}

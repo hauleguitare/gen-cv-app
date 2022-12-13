@@ -1,0 +1,1 @@
+export const AVATAR_CALLBACK = 'https://znews-photo.zingcdn.me/w660/Uploaded/aobovhp/2019_12_14/101.jpg'

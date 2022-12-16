@@ -22,9 +22,8 @@ function AppService() {
   };
 }
 
-// Declare function to custom hook
-const useAppService = () => {
+const createAppService = () => {
   return AppService();
 };
 
-export default useAppService;
+export default AppService;

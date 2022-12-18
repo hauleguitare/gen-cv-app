@@ -98,21 +98,3 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
 };
 
 export default Article;
-
-/*
-
-<ArticleGroup>
-                <Typography usage="title">Experiences</Typography>
-                <Timeline from="June 2020" to="September 2022">
-                  <Typography usage="content" className="font-bold">
-                    Working in Google
-                  </Typography>
-                </Timeline>
-                <Timeline from="June 2020" to="September 2022">
-                  <Typography usage="content" className="font-bold">
-                    Working in Google
-                  </Typography>
-                </Timeline>
-              </ArticleGroup>
-
-*/

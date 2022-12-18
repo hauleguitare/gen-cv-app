@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import Article from "../components/article";
 import Sidebar from "../components/sidebar";
 import useAppProvider from "../context/appContext";
@@ -12,6 +12,14 @@ interface IGenCvComponentProps {}
 const ResumeComponent: React.FunctionComponent<IGenCvComponentProps> = (props) => {
   const dataLoader = useLoaderData() as CvData;
   const { Provider } = useAppProvider();
+  let location = useLocation();
+
+  React.useEffect(() => {
+    const arrayPathname = location.pathname.split("/");
+    if (arrayPathname.includes("print")) {
+      window.print();
+    }
+  }, []);
 
   if (!dataLoader) {
     return null;

@@ -22,7 +22,7 @@ function AppService() {
   };
 }
 
-const createAppService = () => {
+export const createAppService = () => {
   return AppService();
 };
 

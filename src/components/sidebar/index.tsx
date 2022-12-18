@@ -17,7 +17,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
           <React.Fragment>
             <aside className="flex-1 max-w-[280px] bg-cyan-900">
               <div className="p-4 flex flex-col gap-4">
-                <Avatar src={data.avata || AVATAR_CALLBACK} />
+                {data.avata && <Avatar src={data.avata || AVATAR_CALLBACK} />}
                 {/* <NameSidebar name="Gurleen Singh" /> */}
                 <FieldGroupSidebar title="Contract">
                   <FieldSidebar href={data.linkedinurl} />
@@ -25,9 +25,9 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
                   <FieldSidebar title={data.cvjson.userProfile.location.country} />
                 </FieldGroupSidebar>
 
-                <FieldSidebarChangeState defaultData={data.cvjson.skills} title="Language" />
+                <FieldSidebarChangeState defaultData={data.cvjson.skills} title="Top Skills" />
 
-                <FieldSidebarChangeState defaultData={["Swimming", "Play guitar", "Read book"]} title="Activities" />
+                {/* <FieldSidebarChangeState defaultData={["Swimming", "Play guitar", "Read book"]} title="Activities" /> */}
               </div>
             </aside>
           </React.Fragment>

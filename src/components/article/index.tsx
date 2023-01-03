@@ -20,9 +20,12 @@ const EndLine: React.FunctionComponent<IEndLineProps> = (props) => {
   );
 };
 
-interface IArticleProps {}
+interface IArticleProps {
+  fullname?: string | null
+}
 
 const Article: React.FunctionComponent<IArticleProps> = (props) => {
+  const {fullname} = props;
   const { Context } = useAppProvider();
 
   return (
@@ -32,7 +35,7 @@ const Article: React.FunctionComponent<IArticleProps> = (props) => {
           <React.Fragment>
             <main className="flex-auto mx-8 mt-16">
               <ArticleGroup>
-                <Typography usage="title">{data.fullname}</Typography>
+                <Typography usage="title">{fullname ? fullname : data.fullname}</Typography>
               </ArticleGroup>
 
               {/* -------------------------------- EDUCATION -------------------------------- */}
